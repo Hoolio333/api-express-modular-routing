@@ -33,4 +33,10 @@ router.put("/:id", (req, res) => {
   res.json({ book });
 });
 
+router.patch("/:id", (req, res) => {
+  const book = books.find((item) => item.id === Number(req.params.id));
+  book.type = req.body.type;
+  res.json({ book });
+});
+
 module.exports = router;

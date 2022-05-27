@@ -12,6 +12,16 @@ router.get("/", (req, res) => {
   }
 });
 
+router.get("/error/:id", (req, res) => {
+  const id = req.params.id;
+  if (id > 4) {
+    res.status(404);
+    res.json({ error: `film id: ${id} does not exist` });
+  } else {
+    res.json({ OK: `film id: ${id} is fine` });
+  }
+});
+
 router.get("/:id", (req, res) => {
   const film = films.find((item) => item.id === Number(req.params.id));
   res.json({ film });

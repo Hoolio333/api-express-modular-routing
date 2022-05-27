@@ -11,10 +11,12 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 // REQUIRE ROUTERS
-const usersRouter = require("./src/routers/users");
+const usersRouterUser = require("./src/routers/users");
+const usersRouterFilms = require("./src/routers/films");
 
 // ADD ROUTERS TO APP
-
+app.use("/users", usersRouterUser);
+app.use("/films", usersRouterFilms);
 
 /* START SERVER */
 app.listen(port, () => {
